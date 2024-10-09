@@ -24,4 +24,5 @@ def download_video():
 
 if __name__ == '__main__':
     os.makedirs('downloads', exist_ok=True)  # Create downloads directory
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Get port from environment variable
+    app.run(host='0.0.0.0', port=port)  # Run on the specified port
