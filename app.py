@@ -4,6 +4,10 @@ import os
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "API de descarga de videos de YouTube. Usa el endpoint /download."
+
 @app.route('/download', methods=['POST'])
 def download_video():
     url = request.json.get('url')
@@ -24,5 +28,4 @@ def download_video():
 
 if __name__ == '__main__':
     os.makedirs('downloads', exist_ok=True)  # Create downloads directory
-    port = int(os.environ.get("PORT", 5000))  # Get port from environment variable
-    app.run(host='0.0.0.0', port=port)  # Run on the specified port
+    app.run(debug=True)
